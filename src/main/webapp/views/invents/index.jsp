@@ -27,7 +27,8 @@
         <td><%=invent.getItem_name()%></td>
         <td><a href = "/invent-controller?id=<%=invent.getItem_id()%>"> Card </a></td>
         <td><a href = "/views/invents/edit.jsp?item_id=<%=invent.getItem_id()%>&item_name=<%=invent.getItem_name()%>&item_price=<%=invent.getItem_price()%>&item_img=<%=invent.getItem_img()%>">Edit</a></td>
-    <%}%>
+        <td><a href = "/views/invents/delete.jsp?item_id=<%=invent.getItem_id()%>&item_name=<%=invent.getItem_name()%>">Delete</a>
+            <%}%>
 
 </table>
 <a href = "/views/invents/new.jsp"><button>Add</button></a>

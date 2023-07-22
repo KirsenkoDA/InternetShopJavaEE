@@ -38,17 +38,30 @@ public class InventController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Invent invent = new Invent();
         InventDAO inventDAO = new InventDAO();
-        invent.setItem_id(Integer.parseInt(req.getParameter("item_id")));
-        invent.setItem_name(req.getParameter("item_name"));
-        invent.setItem_price(Integer.parseInt(req.getParameter("item_price")));
-        invent.setItem_img(req.getParameter("item_img"));
-        String editParm = (String)req.getParameter("edit");
-        if(editParm.equals("1"))
-        {
-            inventDAO.edit(invent);
+        String operationParm = (String)req.getParameter("operation");
+        switch (operationParm){
+            case "edit":
+            case "add":
+                invent.setItem_id(Integer.parseInt(req.getParameter("item_id")));
+                invent.setItem_name(req.getParameter("item_name"));
+                invent.setItem_price(Integer.parseInt(req.getParameter("item_price")));
+                invent.setItem_img(req.getParameter("item_img"));
+                break;
+            case "delete":
+                invent.setItem_id(Integer.parseInt(req.getParameter("item_id")));
+                invent.setItem_name(req.getParameter("item_name"));
+                break;
         }
-        else {
-            inventDAO.add(invent);
+        switch (operationParm){
+            case "edit":
+                inventDAO.edit(invent);
+                break;
+            case "delete":
+                inventDAO.delete(invent);
+                break;
+            case "add":
+                inventDAO.add(invent);
+                break;
         }
         resp.sendRedirect("/invent-controller");
     }

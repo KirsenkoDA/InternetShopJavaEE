@@ -43,7 +43,7 @@ public class InventDAO {
         try {
             Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TestDB", "postgres", "1976");
 
-            PreparedStatement pstmt = conn.prepareStatement("SELECT item_id, item_name, item_price, item_img FROM invent_table WHERE item_id = ?;");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT item_id, item_name, item_price, item_img FROM invent_table WHERE item_id = ? ORDER BY item_id;");
             pstmt.setInt(1, itemId);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
@@ -91,6 +91,23 @@ public class InventDAO {
             pstmt.setString(1,invent.getItem_name());
             pstmt.setInt(2,invent.getItem_price());
             pstmt.setString(3,invent.getItem_img());
+            pstmt.executeUpdate();
+            pstmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void delete(Invent invent)
+    {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/TestDB", "postgres", "1976");
+            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM invent_table WHERE item_id = ?;");
+            pstmt.setInt(1, invent.getItem_id());
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException e) {

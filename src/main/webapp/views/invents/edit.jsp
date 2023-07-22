@@ -30,7 +30,7 @@
     </p>
     <br>
     <p>
-        <input name = "edit" value = "1" >
+        <input type="hidden" name = "operation" value = "edit" >
     </p>
     <br>
     <button type = "submit">Edit</button>

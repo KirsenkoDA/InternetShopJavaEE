@@ -29,6 +29,9 @@
         Image <input name = "item_img">
     </p>
     <br>
+    <p>
+        <input  type="hidden" name = "operation" value = "add" >
+    </p>
     <button type = "submit">Create</button>
 </form>
 </body>
