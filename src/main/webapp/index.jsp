@@ -16,7 +16,7 @@
 </p>
 </div>
 <br/>
-<a href="/controllers/userControllers/user-servlet">User List</a>
+<a href="/users-controller">User List</a>
 <br>
 <a href="/invent-controller">Invent List</a>
 </body>
