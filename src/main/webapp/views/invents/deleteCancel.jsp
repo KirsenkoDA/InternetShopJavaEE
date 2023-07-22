@@ -12,6 +12,6 @@
 </head>
 <body>
 <h1>Operation canceled</h1>
-<a href = "/invent-controller"><button>Return to Invent List</button></a>
+<a href = "/invent-controller"><button>Return to invent list</button></a>
 </body>
 </html>
